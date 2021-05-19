@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_084808) do
+ActiveRecord::Schema.define(version: 2021_05_19_092300) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "address"
+    t.string "postal_code"
+    t.string "name"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -32,31 +36,64 @@ ActiveRecord::Schema.define(version: 2021_05_19_084808) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "product_id"
+    t.integer "amount"
   end
 
   create_table "customers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "postal_code"
+    t.text "address"
+    t.string "email"
+    t.string "encrypted_password"
+    t.string "phone_number"
+    t.boolean "is_deleted"
   end
 
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "order_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "production_status"
+    t.integer "amount"
+    t.integer "price"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.integer "shipping_cost"
+    t.integer "total_payment"
+    t.integer "payment_method"
+    t.integer "status"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
+    t.string "name"
+    t.text "description"
+    t.string "image_id"
+    t.boolean "sale_status"
+    t.integer "price"
   end
 
   create_table "users", force: :cascade do |t|
