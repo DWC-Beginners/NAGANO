@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class Admins::CustomersController < Admins::ApplicationController
 
   def index
     @customers = Customer.page(params[:page]).reverse_order
@@ -29,5 +29,6 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:first_name, :last_name, :first_name_kana,
     :last_name_kana, :postal_code, :address, :email, :phone_number, :is_deleted)
   end
+
 
 end
