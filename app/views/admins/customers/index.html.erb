@@ -19,7 +19,7 @@
           <tr>
             <td><%= customer.id %></td>
             <!--氏名は会員詳細のリンクにしている-->
-            <td><%= link_to customer.last_name + customer.first_name admin_customer_path(customer) %></td>
+            <td><%= link_to customer.last_name.to_s + customer.first_name.to_s, admins_customer_path(customer) %></td>
             <td><%= customer.email %> </td>
 
             <!--会員のステータス(退会フラグ？)が有効か退会かで表示を変える-->
@@ -33,6 +33,7 @@
               <% end %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
