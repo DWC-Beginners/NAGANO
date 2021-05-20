@@ -1,0 +1,35 @@
+<h1>商品新規登録</h1>
+<table>
+  <%= form_with model:@product,local:true do |f| %>
+    <tr>
+      <td>商品画像</td>
+      <td><%= f.attachment_field :image %></td>
+    </tr>
+    <tr>
+      <td>商品名</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>商品説明</td>
+      <td><%= f.text_area :description %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <tr><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }, {include_blank: '選択してください' } %></tr>
+    </tr>
+    <tr>
+      <th>税別価格</th>
+      <th><%= f.text_field :price %>円</th>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <th>
+        <label><%= f.radio_button :sale_status, "1" %>販売中</label>
+        <label><%= f.radio_button :sale_status, "2" %>販売停止中</label>
+      </th>
+    </tr>
+    <h4>販売ステータス</h4>
+    
+    <%= f.submit'新規登録' %>
+  <% end %>
+</table>
