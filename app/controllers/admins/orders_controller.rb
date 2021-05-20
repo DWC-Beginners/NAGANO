@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class OrdersController < ApplicationController
   def index
     @orders = Order.page(params[:page]).reverse_order
@@ -19,4 +20,7 @@ class OrdersController < ApplicationController
 end
   end
   
+=======
+class Admins::OrdersController < Admins::ApplicationController
+>>>>>>> origin/develop
 end
