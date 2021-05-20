@@ -1,0 +1,69 @@
+<h1>注文履歴詳細</h1>
+
+<table>
+  <tr>
+    <td>購入者</td>
+    <td><%= @order.name %></td>
+  </tr>
+  <tr>
+    <td>注文日</td>
+    <td><%= @order.%></td>
+  </tr>
+  <tr>
+    <td>配送先</td>
+    <td><%= @order.postal_code%></td>
+    <td><%= @order.address %></td>
+  </tr>
+  <tr>
+    <td>支払方法</td>
+    <td><%= @order.payment_method %></td>
+  </tr>
+  <td>
+    <td>注文ステータス</td>
+    <td><%= form.select :status, options_for_select(Orders.statuses), {prompt: "選択してください"}, class: "status-select" %></td>
+    
+    <td><%= %></td>
+  </td>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th制作ステータス></th>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <% @order_items.each do |order_item| %>
+       <td><%= product.name %></td>
+       <td><%= product.price %></td>
+       <td><%= order_item.amount %></td>
+       <td><%= order_item.price %></td>
+       <td><%=order_item.production_status%></td>
+       <td><%=  "更新"%></td>
+      <% end %>
+    </tr>
+  </thead>
+</table>
+
+<table>
+  <tr>
+    <td>商品合計</td>
+    <td><%= @order.total_payment %></td>
+  </tr>
+  <tr>
+    <td>送料</td>
+    <td><%= @order.shipping_cost %></td>
+  </tr>
+  <tr>
+    <td>請求金額合計</td>
+    <td><%= @order.%></td>
+  </tr>
+</table>
+
+
+
