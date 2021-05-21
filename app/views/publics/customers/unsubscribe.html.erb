@@ -1,0 +1,16 @@
+
+<div class="container">
+  <div class="row">
+    <div>
+      <h2>本当に退会しますか？</h2>
+      <p>
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary" %>
+      <!--退会するときにパスが必要だがおそらく作成されていない-->
+      <%= link_to "退会する", 退会するときのパスが不明,method: :patch, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
