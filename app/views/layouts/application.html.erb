@@ -9,8 +9,65 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
+      <nav class="navbar navbar-expand-1g navbar-dark bg-dark">
+        <div class="container">
+          <!--ロゴの記述が分からない-->
+          <%= link_to image_tag("rogo.png"), "/" %>
+          <!--pathにカッコ以下文をつけていないので追記すること-->
+          <% if admin_sign_in? %>
+          <ul>
+            <li>
+              <%= link_to "商品一覧", admins_products_path(prduct),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "会員一覧", admins_customers_path(csutomer),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "注文履歴一覧", admins_orders_path(orders),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "ジャンル一覧", admins_genres_path(genres),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-default' %>
+            </li>
+          </ul>
+          <% elsif customer_sign_in? %>
+          <ul>
+            <li class=>
+              <%= link_to "マイページ", customer_path(customer),class: 'btn btn-default'  %>
+            </li>
+            <li>
+              <%= link_to "会員一覧", customers_path(customer),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "カート", cart_items_path(cart_item),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-default' %>
+            </li>
+          </ul>
+          <!--管理者側、会員側どちらもログインしていない時は共通なので-->
+          <% else %>
+          <ul>
+            <li>
+              <%= link_to "About", home_about_path(home),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", items_path(item),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path(device),class: 'btn btn-default' %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path(devise),class: 'btn btn-default' %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
