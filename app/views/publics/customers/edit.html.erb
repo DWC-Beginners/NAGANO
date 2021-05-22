@@ -32,7 +32,7 @@
       <tr>
         <td><%= f.submit "編集内容を保存", class: "btn btn-primary" %></td>
         <!--退会確認ページのパスが不明-->
-        <td><%= link_to "退会する", ここに退会確認ページのパスを書く ,class: "btn btn-primary"%></td>
+        <td><%= link_to "退会する", customers_unsubscribe(customer),class: "btn btn-primary"%></td>
       </tr>
       <% end %>
   </table>

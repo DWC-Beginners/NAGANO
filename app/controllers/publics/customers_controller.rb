@@ -19,15 +19,14 @@ class Publics::CustomersController < Publics::ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find(current_customer.id)
-    if @customer.update(is_valid: false)
-      sign_out current_customer
-      redirect_to root_path
-    end
+    @customer = Customer.find_by(name: params[:name])
   end
-  
+
   def withdraw
-    
+    @customer = Customer.find_by(name: params[:name])
+    @customer.update(is_valid: false)
+    reset_session
+    redirect_to root_path
   end
 
 
