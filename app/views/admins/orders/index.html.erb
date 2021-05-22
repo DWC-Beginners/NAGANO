@@ -14,7 +14,6 @@
       <% @orders.each do |order| %>
        <td>
          <%= link_to order.created_at, admins_order_path(order.id) %>
-
        </td>
        <td><%= order.name %></td>
        <td><%= order.order_items.amount %></td>
