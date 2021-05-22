@@ -1,0 +1,11 @@
+<h1>注文情報入力</h1>
+<%= form_with model: @order, local:true do |f| %>
+<h2>支払い方法</h2>
+<%= f.collection_radio_buttons :parking, Shop.parkings_i18n, :first , :last %>
+<% end %>
+
+
+
+collection_radio_buttons(オブジェクト名, コレクション名, メソッド名, value値 [, オプション])
+
+<%= button_to "確認画面へ進む"、action: "comfirm" %>
