@@ -1,0 +1,24 @@
+<h1>商品一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税別価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <% @products.each do |product| %>
+  <thead>
+    <tr>
+      <th><%= product_id %></th>
+      <th><%= product.name %></th>
+      <th><%= product.price %></th>
+      <th><%= product.genre_id %></th>
+      <th><%= product.sale_status %></th>
+    </tr>
+  </thead>
+</table>
+<% end %>
+<%= paginate @products %>
