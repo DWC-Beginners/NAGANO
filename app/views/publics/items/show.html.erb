@@ -1,0 +1,25 @@
+
+<h1>商品詳細</h1>
+<%= attachment_image_tag @product, :image %>
+<table>
+  <tr>
+    <td>商品名</td>
+    <td><%= @product.name %></td>
+  </tr>
+  <tr>
+    <td>商品説明</td>
+    <td><%= @product.description %></td>
+  </tr>
+  <tr>
+     <td>税込価格</td>
+     <td><%= @product.price * 1.1 %></td>
+  </tr>
+  <tr>
+  <%= form_with model: @product do |f| %>
+   <td>
+    <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"]], include_blank: "個数" %>
+   </td>
+  <% end %>
+     <td><%= link_to "編集する", edit_admin_product_path(@product) %></td>
+  </tr>
+</table>

@@ -1,0 +1,7 @@
+<h1>商品一覧</h1>
+<% @product.each do |list| %>
+  <%= attachment_image_tag product, :image %>
+  <%= product.name %>
+  <%= product.price %>
+<% end %>
+<%= paginate @products %>
