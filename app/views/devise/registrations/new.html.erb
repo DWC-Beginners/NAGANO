@@ -7,37 +7,45 @@
 <div class="container">
   <div class="row">
     <div>
-      <tavle>
+      <table>
         <tr>
           <td>名前</td>
-          <td><%= f.text_field :lasr_name, autocomplete: "令和" %></td>
-          <td><%= f.text_field :first_name, autocomplete: "道子" %></td>
+          <td>(姓)<%= f.text_field :lasr_name, autofocus: true, autocomplete: "令和" %></td>
+          <td>(名)<%= f.text_field :first_name, autofocus: true, autocomplete: "道子" %></td>
         </tr>
         <tr>
           <td>フリガナ</td>
-          <td><%= f.text_field :last_name_kana, autocomplete: "レイワ" %></td>
-          <td><%= f.text_field :first_name_kana, autocomplete: "ミチコ" %></td>
+          <td>(セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ" %></td>
+          <td>(メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ミチコ" %></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
-          <td><%= f.text_field :email, autocomplete: "sample@example.com" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "sample@example.com" %></td>
         </tr>
         <tr>
           <td>郵便番号(ハイフンなし)</td>
-          <td><%= f.text_field :postal_code, autocomplete: "0000000" %></td>
+          <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "0000000" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :addres, autofocus: true, autocomplete: "東京都渋谷区代々木神保町" %> </td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "0000000000" %></td>
         </tr>
         <tr>
           <td>パスワード(6文字以上)</td>
-          <td><%= f.text_field :ncrypted_password, autocomplete: "東京都渋谷区代々木神保町" %></td>
+          <td><%= f.password_field :ncrypted_password %></td>
         </tr>
         <tr>
           <td>パスワード(確認用)</td>
-          <td><%= f.text_field :ncrypted_password_confirmation %></td>
+          <td><%= f.password_field :ncrypted_password_confirmation %></td>
         </tr>
         <tr>
           <td><%= f.submit "新規登録" %></td>
         </tr>
-      </tavle>
+      </table>
       <div>
         <h3>既に登録済みの方</h3><br>
         <%= link_to "こちら" new_user_session_path(sessions) %>
@@ -45,41 +53,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
