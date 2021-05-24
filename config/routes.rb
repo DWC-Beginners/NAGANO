@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   scope module: :publics do
     root 'homes#top'
     get 'home/about' => 'homes#about'
+    get "/orders/complete"
+    post "orders/comfirm"
+    
     resources :items
     resources :customers
     resources :cart_items
