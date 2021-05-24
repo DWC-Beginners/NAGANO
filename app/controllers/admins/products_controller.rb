@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 class Admins::ProductsController < ApplicationController
-=======
-class Admins::ProductsController < Admins::ApplicationController
   
->>>>>>> origin/develop
   def index
     @products = Product.page(params[:page]).reverse_order
   end

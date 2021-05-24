@@ -16,11 +16,7 @@
     <h2><strong>新着商品</strong></h2>
   </div>
   <div class="row">
-<<<<<<< HEAD
-    <% @new_arrivals_products.each do |items| %>
-=======
     <!--<% @new_arrivals_products.each do |product| %>-->
->>>>>>> origin/develop
       <div class="col-3 ">
         <%= link_to product_path(product) do %>
           <%= attachment_image_tag product, :image, size: '250x250', fallback: "kanban_jyunbi.png", size:'250x250' %>

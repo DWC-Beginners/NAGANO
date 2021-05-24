@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     end
   end
  namespace :admins do
-    root 'homes#top'
+    root 'devise/sessions#new'
+    get 'homes/top' => 'homes#top'
     resources :products
     resources :customers
     resources :genres

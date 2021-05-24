@@ -1,4 +1,4 @@
-class Publics::ProductsController < Publics::ApplicationController
+class Publics::ProductsController < ApplicationController
   def index
     @products = Product.page(params[:page]).reverse_order
   end

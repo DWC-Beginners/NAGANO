@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 class Publics::DeliveriesController < ApplicationController
-=======
-class Publics::DeliveriesController < Publics::ApplicationController
   
   def index
     @deliveries = Delivery.all
@@ -36,5 +33,4 @@ class Publics::DeliveriesController < Publics::ApplicationController
     params.require(:address).permit(:customer_id, :postal_code, :address, :name)
     
   end
->>>>>>> origin/develop
 end

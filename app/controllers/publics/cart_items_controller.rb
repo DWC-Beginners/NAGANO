@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 class Publics::CartItemsController < ApplicationController
-=======
-class Publics::CartItemsController < Publics::ApplicationController
   def index
     @cart_items = @customer.cart_items.includes(:pro)
     @total_payment = @cart_items.sum{|cart_item|(cart_item.product.price * 1.1).floor * cart_item.amount}
@@ -42,5 +39,4 @@ class Publics::CartItemsController < Publics::ApplicationController
     params.require(:cart_item).permit(:amount, :product_id, :customer_id)
   end
   
->>>>>>> origin/develop
 end

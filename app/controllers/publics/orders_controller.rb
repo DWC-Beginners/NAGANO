@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 class Publics::OrdersController < ApplicationController
-=======
-class Publics::OrdersController < Publics::ApplicationController
   def new
     @order = Order.new
   end
@@ -40,5 +37,4 @@ class Publics::OrdersController < Publics::ApplicationController
   end
   
   
->>>>>>> origin/develop
 end
