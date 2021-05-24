@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   scope module: :publics do
     root 'homes#top'
     get 'home/about' => 'homes#about'
-    get 'customers/unsubscribe', to: 'customer#unsubscribe'
-    patch "customers/withdraw", to: 'customer#withdraw'
+
     resources :items
     resources :customers
     resources :cart_items
