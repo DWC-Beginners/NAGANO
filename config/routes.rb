@@ -8,9 +8,13 @@ Rails.application.routes.draw do
 
     resources :items
     resources :customers
-    resources :cart_items
     resources :orders
     resources :deliveries
+    resources :cart_items do
+      collection do
+        delete 'all_destroy'
+      end
+    end
   end
  namespace :admins do
     root 'homes#top'
