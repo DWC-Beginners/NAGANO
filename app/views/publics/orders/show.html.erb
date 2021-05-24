@@ -57,7 +57,8 @@
       　　<td><%= order_item.product.name %></td>
       　　<td><%= order_item.product.price %></td>
       　　<td><%= order_item.amount %></td>
-      　　<td><%= order_item.price %></td>
+      　　<td><%= order_item.price　* 1.1  %></td>
+      　　<!--priceの部分間違ってそう。他に何かいるかも-->
       <% end %>
     </tr>
   </tbody>

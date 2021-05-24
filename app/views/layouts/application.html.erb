@@ -13,12 +13,18 @@
     <header>
       <nav class="navbar navbar-expand-1g navbar-dark bg-dark">
         <div class="container">
+<<<<<<< HEAD
           <!--ロゴの記述が分からない-->
           <%= link_to  "/" do %>
             <%= image_tag("logo.png") %>
           <% end %>
           <!--pathにカッコ以下文をつけていないので追記すること-->
           <% if admin_signed_in? %>
+=======
+          <!--ロゴを画像で表示する、つまり画像を用意しないといけない-->
+          <%= link_to image_tag("rogo.png"), "/" %>
+          <% if admin_sign_in? %>
+>>>>>>> origin/develop
           <ul>
             <li>
               <%= link_to "商品一覧", admins_products_path,class: 'btn btn-default' %>

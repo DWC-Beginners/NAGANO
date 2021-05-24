@@ -1,11 +1,49 @@
 <h1>注文情報入力</h1>
-<%= form_with model: @order, local:true do |f| %>
-<h2>支払い方法</h2>
-<%= f.collection_radio_buttons :parking, Shop.parkings_i18n, :first , :last %>
+<%= form_with model: (model:[@order, @address]) local:true do |f| %>
+    <h2>支払い方法</h2>
+    <label><%= f.radio_button :payment_method, "0" %>クレジットカード</label>
+    <label><%= f.radio_button :payment_method, "1" %>銀行振込</label>
+    
+    <h2>お届け先</h2>
+    <label>
+        <%= f.radio_button :address %>ご自身の住所
+        <table>
+            <tr>
+                <td><%= @order.postal_code %></td>
+                <td><%= @order.address %></td><br>
+                <td><%= @order.customer.last_name.to_s + order.customer.first.name.to_s %></td>
+            </tr>
+        </table>
+    </label>
+    <label>
+        <%= f.radio_button :address %>登録済住所から選択
+
+        <%= f.collection_select :address, Order.all, :id ,:customer_id %> 
+    </label>
+    
+    <label>
+        <%= f.radio_button :address %>新しいお届け先
+        <table>
+            <tr>
+                <td>郵便番号（ハイフンなし）</td>
+                <td><%= f.number_field :postal_code %></td>
+            </tr>
+            <tr>
+                <td>住所</td>
+                <td><%= f.text_field :address %></td>
+            </tr>
+            <tr>
+                <td>宛名</td>
+                <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+                <td><%= f.submit '確認画面へ進む', data: { confirm: '確認画面へ進む'}%></td>
+            </tr>
+        </table>
+    
+    </label>
+
+
 <% end %>
 
 
-
-collection_radio_buttons(オブジェクト名, コレクション名, メソッド名, value値 [, オプション])
-
-<%= button_to "確認画面へ進む"、action: "comfirm" %>

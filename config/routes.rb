@@ -5,11 +5,19 @@ Rails.application.routes.draw do
   scope module: :publics do
     root 'homes#top'
     get 'home/about' => 'homes#about'
+    get "/orders/complete"
+    post "orders/comfirm"
+    get 'customers/unsubscribe', to: 'customer#unsubscribe'
+    patch "customers/withdraw", to: 'customer#withdraw'
     resources :items
     resources :customers
-    resources :cart_items
     resources :orders
     resources :deliveries
+    resources :cart_items do
+      collection do
+        delete 'all_destroy'
+      end
+    end
   end
  namespace :admins do
     root 'homes#top'

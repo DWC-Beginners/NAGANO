@@ -1,0 +1,28 @@
+
+<h1>商品詳細</h1>
+<%= attachment_image_tag @product, :image %>
+<table>
+  <tr>
+    <td>商品名</td>
+    <td><%= @product.name %></td>
+  </tr>
+  <tr>
+    <td>商品説明</td>
+    <td><%= @product.description %></td>
+  </tr>
+  <tr>
+     <td>税込価格</td>
+     <td><%= @product.price * 1.1 %></td>
+  </tr>
+  <tr>
+  <%= form_with model: @cart_items do |f| %>
+   <td>
+    <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"]], include_blank: "個数" %>
+   </td>
+   <%= f.hidden_field :product_id, :value => @product.id %>
+   <%= f.hidden_field :customer_id, :value => @customer.id %>
+   <td><%= f.submit "カートに入れる" %></td>
+  <% end %>
+  </tr>
+  
+</table>
