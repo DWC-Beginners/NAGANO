@@ -1,2 +1,2 @@
-class Publics::CustomersController < Publics::ApplicationController
+class Publics::CustomersController < ApplicationController
 end

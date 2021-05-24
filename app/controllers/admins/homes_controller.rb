@@ -1,10 +1,7 @@
-class Admins::HomesController < Admins::ApplicationController
+class Admins::HomesController < ApplicationController
     def home
     end
     
     def top
-    end
-    
-    def about
     end
 end
