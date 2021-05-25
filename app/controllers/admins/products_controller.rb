@@ -1,4 +1,4 @@
-class Admins::ProductsController < Admins::ApplicationController
+class Admins::ProductsController < ApplicationController
   
   def index
     @products = Product.page(params[:page]).reverse_order
@@ -32,4 +32,8 @@ class Admins::ProductsController < Admins::ApplicationController
   def product_params
     params.require(:product).permit(:image, :name, :description, :price, :genre_id)
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> origin/develop

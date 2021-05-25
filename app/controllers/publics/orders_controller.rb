@@ -1,4 +1,4 @@
-class Publics::OrdersController < Publics::ApplicationController
+class Publics::OrdersController < ApplicationController
   def new
     @order = Order.new
   end

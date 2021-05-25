@@ -1,4 +1,10 @@
-class Publics::HomesController < Publics::ApplicationController
+class Publics::HomesController < ApplicationController
+    def home
+    end
+    
     def top
+    end
+    
+    def about
     end
 end

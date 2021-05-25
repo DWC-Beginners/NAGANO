@@ -1,4 +1,4 @@
-class Publics::CartItemsController < Publics::ApplicationController
+class Publics::CartItemsController < ApplicationController
   def index
     @cart_items = @customer.cart_items.includes(:pro)
     @total_payment = @cart_items.sum{|cart_item|(cart_item.product.price * 1.1).floor * cart_item.amount}

@@ -1,7 +1,4 @@
-class Admins::OrdersController < Admins::ApplicationController
-  def index
-    @orders = Order.page(params[:page]).reverse_order
-  end
+class Admins::OrdersController < ApplicationController
   
   def show
     @order = Oreder.find(params[:id])

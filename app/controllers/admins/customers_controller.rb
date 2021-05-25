@@ -1,4 +1,4 @@
-class Admins::CustomersController < Admins::ApplicationController
+class Admins::CustomersController < ApplicationController
 
   def index
     @customers = Customer.page(params[:page]).reverse_order
