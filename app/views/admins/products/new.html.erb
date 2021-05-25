@@ -1,6 +1,6 @@
 <h1>商品新規登録</h1>
+  <%= form_with model: @product,url: admins_products_path, local:true do |f| %>
 <table>
-  <%= form_with model: @product, local:true do |f| %>
     <tr>
       <td>商品画像</td>
       <td><%= f.attachment_field :image %></td>
@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <th>ジャンル</th>
-      <tr><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }, {include_blank: '選択してください' } %></tr>
+      <th><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }, {include_blank: '選択してください' } %></th>
     </tr>
     <tr>
       <th>税別価格</th>
@@ -24,12 +24,15 @@
     <tr>
       <th>販売ステータス</th>
       <th>
-        <label><%= f.radio_button :sale_status, "1" %>販売中</label>
-        <label><%= f.radio_button :sale_status, "2" %>販売停止中</label>
+        <label><%= f.radio_button :sale_status, "販売中" %>販売中</label>
+        <label><%= f.radio_button :sale_status, "販売停止中" %>販売停止中</label>
       </th>
     </tr>
-    <h4>販売ステータス</h4>
-    
-    <%= f.submit'新規登録' %>
-  <% end %>
+    <tr>
+      <th>
+        <%= f.submit'新規登録' %>
+      </th>
+    </tr>
+
 </table>
+  <% end %>
