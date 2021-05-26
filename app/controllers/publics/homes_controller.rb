@@ -3,6 +3,7 @@ class Publics::HomesController < ApplicationController
     end
 
     def top
+        @products = Product.all
 
     end
 
