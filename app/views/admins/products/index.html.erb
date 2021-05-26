@@ -17,9 +17,9 @@
       <th><%= link_to product.name, "/admins/products/#{product.id}" %></th>
       <th><%= product.price %></th>
       <th><%= product.genre.name %></th>
-      
+      <th><%= product.sale_status %></th>
     </tr>
   </tbody>
   <% end %>
 </table>
-<%= paginate @product %>
+<%= paginate @products %>
