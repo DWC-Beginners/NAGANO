@@ -5,7 +5,7 @@
     <tr>
       <th>商品ID</th>
       <th>商品名</th>
-      <th>税別価格</th>
+      <th>税抜価格</th>
       <th>ジャンル</th>
       <th>ステータス</th>
     </tr>
@@ -14,16 +14,12 @@
   <tbody>
     <tr>
       <th><%= product.id %></th>
-      <th><%= product.name %></th>
+      <th><%= link_to product.name, "/admins/products/#{product.id}" %></th>
       <th><%= product.price %></th>
       <th><%= product.genre.name %></th>
-      <th><%= product.sale_status %></th>
+      
     </tr>
   </tbody>
-<<<<<<< HEAD
   <% end %>
-=======
-　<% end %>
->>>>>>> 068b7313cec9e7a93f008cb1b226335ec028d1fc
 </table>
 <%= paginate @product %>
