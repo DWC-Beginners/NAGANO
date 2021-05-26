@@ -1,8 +1,8 @@
 class Admins::ProductsController < ApplicationController
 
   def index
-    @product = Product.page(params[:page]).reverse_order
-    @products = Product.all
+    @products = Product.page(params[:page])
+
   end
 
   def show
@@ -26,7 +26,7 @@ class Admins::ProductsController < ApplicationController
   def update
     product = Product.find(params[:id])
     product.update(product_params)
-    redirect_to admins_product_path(product_id)
+    redirect_to admins_products_path(product.id)
   end
 
   private
