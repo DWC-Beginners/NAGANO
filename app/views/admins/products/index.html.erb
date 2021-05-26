@@ -1,4 +1,5 @@
 <h1>商品一覧</h1>
+<%= link_to "商品新規登録",new_admins_product_path %>
 <table>
   <thead>
     <tr>
@@ -10,15 +11,15 @@
     </tr>
   </thead>
   <% @products.each do |product| %>
-  <thead>
+  <tbody>
     <tr>
-      <th><%= product_id %></th>
+      <th><%= product.id %></th>
       <th><%= product.name %></th>
       <th><%= product.price %></th>
-      <th><%= product.genre_id %></th>
+      <th><%= product.genre.name %></th>
       <th><%= product.sale_status %></th>
     </tr>
-  </thead>
+  </tbody>
+  <% end %>
 </table>
-<% end %>
-<%= paginate @products %>
+<%= paginate @product %>
