@@ -1,43 +1,5 @@
 <h1>商品新規登録</h1>
-<<<<<<< HEAD
-<%= form_with model: @product, local:true do |f| %>
-  <table>
-      <tr>
-        <td>商品画像</td>
-        <td><%= f.attachment_field :image %></td>
-      </tr>
-      <tr>
-        <td>商品名</td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>商品説明</td>
-        <td><%= f.text_area :description %></td>
-      </tr>
-      <tr>
-        <th>ジャンル</th>
-        <th><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }, {include_blank: '選択してください' } %></th>
-      </tr>
-      <tr>
-        <th>税別価格</th>
-        <th><%= f.text_field :price %>円</th>
-      </tr>
-      <tr>
-        <th>販売ステータス</th>
-        <th>
-          <label><%= f.radio_button :sale_status, "販売中" %>販売中</label>
-          <label><%= f.radio_button :sale_status, "販売停止中" %>販売停止中</label>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.submit'新規登録' %>
-        </th>
-      </tr>
-  </table>
-<% end %>
-=======
-  <%= form_with model: @product,url: admins_products_path, local:true do |f| %>
+<%= form_with model: @product,url: admins_products_path, local:true do |f| %>
 <table>
     <tr>
       <td>商品画像</td>
@@ -62,8 +24,11 @@
     <tr>
       <th>販売ステータス</th>
       <th>
-        <label><%= f.radio_button :sale_status, "販売中" %>販売中</label>
-        <label><%= f.radio_button :sale_status, "販売停止中" %>販売停止中</label>
+        <%= f.radio_button :sale_status, "1" %>
+        <%= f.label :sale_status, '販売中', value: "1" %>
+        <%= f.radio_button :sale_status, "2" %>
+        <%= f.label :sale_status, '販売停止中', value: "2" %>
+        
       </th>
     </tr>
     <tr>
@@ -73,5 +38,5 @@
     </tr>
 
 </table>
-  <% end %>
->>>>>>> 068b7313cec9e7a93f008cb1b226335ec028d1fc
+<% end %>
+
