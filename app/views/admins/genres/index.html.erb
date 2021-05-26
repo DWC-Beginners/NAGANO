@@ -1,5 +1,4 @@
 <h1>ジャンル一覧・追加</h1>
-
 <%= form_with model:@genre,url: admins_genres_path, local:true do |f| %>
   <tr>
     <td>ジャンル名</td>
@@ -7,6 +6,7 @@
     <td><%= f.submit '新規登録' %></td>
   </tr>
 <% end %>
+
 <table>
   <thead>
     <tr>

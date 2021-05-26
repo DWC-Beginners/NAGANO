@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-  <%= form_with model: @product,url: admins_products_path, local:true do |f| %>
+<%= form_with model: @product,url: admins_products_path, local:true do |f| %>
 <table>
     <tr>
       <td>商品画像</td>
@@ -24,8 +24,11 @@
     <tr>
       <th>販売ステータス</th>
       <th>
-        <label><%= f.radio_button :sale_status, "販売中" %>販売中</label>
-        <label><%= f.radio_button :sale_status, "販売停止中" %>販売停止中</label>
+        <%= f.radio_button :sale_status, "1" %>
+        <%= f.label :sale_status, '販売中', value: "1" %>
+        <%= f.radio_button :sale_status, "2" %>
+        <%= f.label :sale_status, '販売停止中', value: "2" %>
+        
       </th>
     </tr>
     <tr>
@@ -35,4 +38,5 @@
     </tr>
 
 </table>
-  <% end %>
+<% end %>
+
