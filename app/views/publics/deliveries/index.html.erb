@@ -1,5 +1,5 @@
 <h1>配送先/登録一覧画面</h1>
-<%= form_with model: @delivery, local:true do |f| %>
+<%= form_with model: @address, local:true do |f| %>
 <table>
   <tr>
     <td>郵便番号</td>
@@ -17,13 +17,7 @@
     </td>
   </tr>
 </table>
-<%= form_with model: @list, url:'/todolists', local:true do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-  <%= f.submit '投稿' %>
-<% end %>
+
 
 <table>
   <thead>
@@ -36,13 +30,13 @@
   </thead>
   <tbody>
     <tr>
-      <% @deliveries.each do |delivery| %>.
-        <td><%= delivery.postal_code %></td>
-        <td><%= delivery.address %></td>
-        <td><%= delivery.name %></td>
+      <% @addresses.each do |address| %>.
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
         <td>
-          <%= button_to "編集する", edit_deliver_path(@delivery.id), method: :patch, class: "register-blue-btn" %>
-          <%= button_to "削除する", destroy_deliver_path(@delivery.id), method: :delete, class: "register-red-btn" %>
+          <%= button_to "編集する", edit_address_path(@address.id), method: :patch, class: "register-blue-btn" %>
+          <%= button_to "削除する", destroy_address_path(@address.id), method: :delete, class: "register-red-btn" %>
         </td>
       <% end %>
     </tr>

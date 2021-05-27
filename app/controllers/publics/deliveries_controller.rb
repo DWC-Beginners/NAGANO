@@ -1,36 +1,36 @@
 class Publics::DeliveriesController < ApplicationController
-  
+
   def index
-    @deliveries = Delivery.all
-    @delivery = Delivery.new #?????
+    @addresses = Addresses(current_customer)
+    @address  = Address.new #?????
   end
-  
+
   def edit
-    @delivery = Delivery.find(params[:id])
+    @addresses  = Address.find(params[:id])
   end
-  
+
   def create
-    delivery = Delivery.new(delivery_params)
-    delivery.save
-    redirect_to delivery_path(delivery.id)
+    address = Address.new(address_params)
+   address.save
+    redirect_to Address_path(address.id)
   end
-  
+
   def update
-    delivery = Delivery.find(params[:id])
-    delivery.update(delivery_params)
-    redirect_to delivery_path(delivery.id)
+    address = Address.find(params[:id])
+    address.update(address_params)
+    redirect_to address_path(address.id)
   end
-  
+
   def destroy
-    delivery = Delivery.find(params[:id])  
-    delivery.destroy  
-    redirect_to deliveries(@delivery.id) #←これいる？
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to deliveries(@address.id) #←これいる？
   end
-  
+
   private
-  
+
   def address_params
     params.require(:address).permit(:customer_id, :postal_code, :address, :name)
-    
+
   end
 end

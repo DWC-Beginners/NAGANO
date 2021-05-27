@@ -8,10 +8,16 @@ class Publics::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  def create
+    @customer = Customer.new(customer_params)
+    @customer.save
+    redirect_to cutomer_path(current_customer)
+  end
+
   # 更新成功失敗時にフラッシュメッセージ必要か？
   def update
     @customer = Customer.find(params[:id])
-    if customer.update(customer_params)
+    if @customer.update(customer_params)
       redirect_to customer_path(current_customer.id)
     else
       render :edit

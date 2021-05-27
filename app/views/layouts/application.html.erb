@@ -36,16 +36,16 @@
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-default' %>
             </li>
           </ul>
-          <% elsif user_signed_in? %>
+          <% elsif customer_signed_in? %>
           <ul>
             <li>
-              <%= link_to "マイページ", customer_path(customer),class: 'btn btn-default'  %>
+              <%= link_to "マイページ", customer_path(current_customer.id),class: 'btn btn-default'  %>
             </li>
             <li>
-              <%= link_to "会員一覧", customers_path,class: 'btn btn-default' %>
+              <%= link_to "商品一覧", products_path,class: 'btn btn-default' %>
             </li>
             <li>
-              <%= link_to "カート", cart_items_path(cart_item),class: 'btn btn-default' %>
+              <%= link_to "カート", cart_items_path,class: 'btn btn-default' %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-default' %>
@@ -58,13 +58,13 @@
               <%= link_to "About", home_about_path,class: 'btn btn-default' %>
             </li>
             <li>
-              <%= link_to "商品一覧", items_path,class: 'btn btn-default' %>
+              <%= link_to "商品一覧", products_path,class: 'btn btn-default' %>
             </li>
             <li>
-              <%= link_to "新規登録", new_user_registration_path,class: 'btn btn-default' %>
+              <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-default' %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path,class: 'btn btn-default' %>
+              <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-default' %>
             </li>
           </ul>
         <% end %>
