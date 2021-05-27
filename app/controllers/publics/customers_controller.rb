@@ -8,11 +8,11 @@ class Publics::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  def create
-    @customer = Customer.new(customer_params)
-    @customer.save
-    redirect_to cutomer_path(current_customer)
-  end
+  #def create
+    #@customer = Customer.new(customer_params)
+    #@customer.save
+    #redirect_to cutomer_path(current_customer)
+  #end
 
   # 更新成功失敗時にフラッシュメッセージ必要か？
   def update
