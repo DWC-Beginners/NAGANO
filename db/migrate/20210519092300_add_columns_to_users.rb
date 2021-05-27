@@ -16,16 +16,6 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.2]
     add_column :orders, :payment_method, :integer
     add_column :orders, :status, :integer
     
-    add_column :customers, :last_name, :string
-    add_column :customers, :first_name, :string
-    add_column :customers, :last_name_kana, :string
-    add_column :customers, :first_name_kana, :string
-    add_column :customers, :postal_code, :string
-    add_column :customers, :address, :text
-    add_column :customers, :email, :string
-    add_column :customers, :encrypted_password, :string
-    add_column :customers, :phone_number, :string
-    add_column :customers, :is_deleted, :boolean
     
     add_column :addresses, :customer_id, :integer
     add_column :addresses, :address, :string
