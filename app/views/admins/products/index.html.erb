@@ -14,7 +14,7 @@
   <tbody>
     <tr>
       <th><%= product.id %></th>
-      <th><%= link_to product.name, "/admins/products/#{product.id}" %></th>
+      <th><%= link_to product.name, admins_product_path(product) %></th>
       <th><%= product.price %></th>
       <th><%= product.genre.name %></th>
       <th><%= product.sale_status %></th>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     get 'home/about' => 'homes#about'
     get "/orders/complete"
     post "orders/comfirm"
-    get 'customers/unsubscribe', to: 'customer#unsubscribe'
-    patch "customers/withdraw", to: 'customer#withdraw'
+    get 'customers/unsubscribe', to: 'customers#unsubscribe'
+    patch "customers/withdraw", to: 'customers#withdraw'
     resources :products
     resources :customers
     resources :orders
