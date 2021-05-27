@@ -1,6 +1,6 @@
 <h1>配送先編集</h1>
 
-<%= form_with model: @delivery, local:true do |f| %>
+<%= form_with model: @addresses,url:address_path, local:true do |f| %>
   <table>
     <tr>
       <td>郵便番号</td>
@@ -14,8 +14,10 @@
       <td>宛名</td>
       <td>
         <%= f.text_field :name %>
-        <%= f.submit '変更内容を保存' %>
       </td>
+    </tr>
+    <tr>
+      <td><%= f.submit '変更内容を保存' %></td>
     </tr>
   </table>
 <% end %>

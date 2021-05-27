@@ -1,5 +1,5 @@
 <h1>配送先/登録一覧画面</h1>
-<%= form_with model: @address, local:true do |f| %>
+<%= form_with model: @address,url:addresses_path, local:true do |f| %>
 <table>
   <tr>
     <td>郵便番号</td>
@@ -36,8 +36,8 @@
         <td><%= address.address %></td>
         <td><%= address.name %></td>
         <td>
-          <%= button_to "編集する", edit_address_path(@address.id), method: :patch, class: "register-blue-btn" %>
-          <%= button_to "削除する", destroy_address_path(@address.id), method: :delete, class: "register-red-btn" %>
+          <%= link_to "編集する", edit_address_path(address.id), class: "register-blue-btn" %>
+          <%= link_to "削除する", address_path(address.id), method: :delete, class: "register-red-btn" %>
         </td>
       <% end %>
     </tr>
