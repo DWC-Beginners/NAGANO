@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :products
     resources :customers
     resources :orders
-    resources :deliveries
+    resources :addresses
     resources :cart_items do
       collection do
         delete 'all_destroy'
