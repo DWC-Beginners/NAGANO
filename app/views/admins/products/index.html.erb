@@ -1,25 +1,39 @@
-<h1>商品一覧</h1>
-<%= link_to "商品新規登録",new_admins_product_path %>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <% @products.each do |product| %>
-  <tbody>
-    <tr>
-      <th><%= product.id %></th>
-      <th><%= link_to product.name, admins_product_path(product) %></th>
-      <th><%= product.price %></th>
-      <th><%= product.genre.name %></th>
-      <th><%= product.sale_status %></th>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
-<%= paginate @products %>
+<div class='container'>
+  <div class='row'>
+    <h4 class='col offset-md-1 mb-md-5'>商品一覧</h4>
+    <div class='mb-3 text-right'>
+      <button type="button" class="btn btn-light shadow-sm rounded-circle p-0" style="width:2rem;height:2rem;">
+        <%= link_to "+",new_admins_product_path, class:"no-underline" %>
+      </button>
+     </div>
+  </div>
+   <div class='row'>
+    <div class="col offset-md-1">
+      <table class="table">
+        <thead class="thead-light">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+        </thead>
+        <% @products.each do |product| %>
+        <tbody>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admins_product_path(product) %></td>
+            <td><%= product.price %></td>
+            <td><%= product.genre.name %></td>
+            <td><%= product.sale_status %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto mx-auto"><%= paginate @products %></div>
+  </div>
+</div>

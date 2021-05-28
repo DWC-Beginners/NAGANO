@@ -1,24 +1,27 @@
 class Publics::CartItemsController < ApplicationController
   def index
-    @cart_items = current_customer.cart_items.includes(:product)
-    @total_payment = @cart_items.sum{|cart_item|(cart_item.product.price * 1.1).floor * cart_item.amount}
+    @cart_items = CartItem.where(customer_id: current_customer.id)
 
   end
 
   def create
-    @cart_items = CartItem.new(cart_item_params)
-    @cart_items.save
-    redirect_to cart_items_path
+    @cart_items = current_customer.cart_items.build(cart_product_params)
+    if
+      @cart_item = current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id])
+      @cart_item.quantity += params[:cart_item][:quantity].to_i
+      @cart_item.save
+      redirect_to cart_items_path
+    else
+      @cart_items.save
+      redirect_to cart_items_path
+    end
   end
 
 
   def update
      @cart_items = CartItems.find(params[:id])
-    if @cart_items.update(cart_item_params)
-      redirect_to cart_item_path,success: '個数を変更しました'
-    else
-      render :index, danger: "個数の変更に失敗しました。"
-    end
+     @cart_items.update(cart_item_params)
+    redirect_to cart_items_path
 
   end
 
@@ -30,8 +33,9 @@ class Publics::CartItemsController < ApplicationController
 
 
   def all_destroy
-    curret_customer.cart_items.all_destroy
-     redirect_to cart_items_path
+    @cart_items = current_customer.cart_item_products
+    @cart_items.destroy.all
+    redirect_to cart_items_path
   end
 
   private

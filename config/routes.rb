@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post "orders/comfirm"
     get 'customers/unsubscribe', to: 'customers#unsubscribe'
     patch "customers/withdraw", to: 'customers#withdraw'
-    resources :products
+    resources :products, only: [:index, :show]
     resources :customers
     resources :orders
     resources :addresses

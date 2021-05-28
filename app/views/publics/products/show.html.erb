@@ -1,28 +1,26 @@
-
-<h1>商品詳細</h1>
-<%= attachment_image_tag @product, :image, :fill, 200, 200 %>
-<table>
-  <tr>
-    <td>商品名</td>
-    <td><%= @product.name %></td>
-  </tr>
-  <tr>
-    <td>商品説明</td>
-    <td><%= @product.description %></td>
-  </tr>
-  <tr>
-     <td>税込価格</td>
-     <td><%= @product.price * 1.1 %></td>
-  </tr>
-  <tr>
-  <%= form_with model: @cart_items do |f| %>
-   <td>
-    <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], include_blank: "個数" %>
-   </td>
-   <%= f.hidden_field :product_id, :value => @product.id %>
-   <%= f.hidden_field :customer_id, :value => @customer.id %>
-   <td><%= f.submit "カートに入れる" %></td>
-  <% end %>
-  </tr>
-  
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <%= attachment_image_tag @product, :image, :fill, 200, 200 %>
+    </div>
+    <div class="col-md-5">
+      <h3 class="product-box"><%= @product.name %></h3>
+      <P class="product-box"><%= @product.description %></P>
+      <h5 class="product-box">¥<%= (@product.price*1.10).to_i %><span class="small">（税込）</span></h5>
+      <%= form_with model: @cart_items, local:true do |f| %>
+        <a class="product-price">
+        <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数" %>
+        </a>
+        
+        <%= form_with model: @cart_items, local:true do |f| %>
+          <% if customer_signed_in? %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <% end %>
+          <%= f.hidden_field :product_id, :value => @product.id %>
+          <%= f.submit 'カートに入れる', class: "glyphicon glyphicon-shopping-cart btn btn-success" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
