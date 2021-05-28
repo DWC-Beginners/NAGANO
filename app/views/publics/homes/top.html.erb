@@ -1,32 +1,36 @@
-
-<p>
-  ようこそ、ながのCAKEへ<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-	会員でない方も商品の閲覧は可能となっておりますが、<br>
-	購入には会員登録が必要になります。
-</p>
-  <div class="row mb-2">
-    <h2><strong>新着商品</strong></h2>
-  </div>
+<div class="container" >
+  <div class="row" style="height:80px"></div>
   <div class="row">
-
-    <% @products.last(4).each do |product| %>
-      <div class="col-3 ">
-        <table>
-          <tr>
-            <th><%= attachment_image_tag product, :image, :fill, 200, 200 %></th>
-            <th><%= product.name %></th>
-            <th>¥<%= product.price %></th>
-          </tr>
-        </table>
+    <div class="col-12">
+      <p class="text-center">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない⽅も商品の閲覧はできますが、<br>
+        購⼊には会員登録が必要になります。<br>
+      </p>
+      <br>
       </div>
-    <% end %>
   </div>
-
-
-
-    <div class="col-4 d-flex justify-content-end">
-     <p><%= link_to "全ての商品を見る>", products_path %></p>
+    <div class="row mt-4 mb-4">
+      <div class="col-md-3 offset-md-1">
+      <h5>新着商品</h5>
+      </div>
     </div>
-  </div>
+    <br>
+    <div class="row" >
+      <% @products.last(4).each do |product| %>
+        <div class="col-md-2 offset-md-1">
+          <%= link_to product_path(product.id) do %>
+            <p><%= attachment_image_tag product, :image, :fill, 200, 200 %></p>
+          <% end %>
+          <p><%= product.name %></p>
+          <p>¥<%= product.price %></p>
+        </div>
+      <% end %>
+         <div class="col-2">
+         </div>
+    </div>
+      <div class="offset-9">
+      <%= link_to "全ての商品を見る>", products_path %>
+      </div>
 </div>

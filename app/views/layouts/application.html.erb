@@ -1,76 +1,78 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>Cake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-expand-1g navbar-dark bg-dark">
-        <div class="container">
-          <!--ロゴの記述が分からない-->
-          <%= link_to  "/" do %>
-            <%= image_tag("logo.png") %>
-          <% end %>
-          <!--pathにカッコ以下文をつけていないので追記すること-->
-          <% if admin_signed_in? %>
-          <ul>
-            <li>
-              <%= link_to "商品一覧", admins_products_path,class: 'btn btn-default' %>
+    <header class="navbar shadow-sm">
+      <div>
+        <ul class="navbar-nav">
+          <nav class="navbar navbar-expand-lg">
+            <li class="nav-item d-flex align-items-center">
+            <%= link_to  "/" do %>
+              <%= image_tag("logo.png") %>
+            <% end %>
             </li>
-            <li>
-              <%= link_to "会員一覧", admins_customers_path,class: 'btn btn-default' %>
+        </ul> 
+      </div>    <!--pathにカッコ以下文をつけていないので追記すること-->
+        <ul class="nav justify-content-end">
+          <% if customer_signed_in? %>
+            <li class="nav-item d-flex align-items-center">
+             ようこそ、<%= current_customer.last_name %>さん！
             </li>
-            <li>
-              <%= link_to "注文履歴一覧", admins_root_path,class: 'btn btn-default' %>
-            </li>
-            <li>
-              <%= link_to "ジャンル一覧", admins_genres_path,class: 'btn btn-default' %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-default' %>
-            </li>
-          </ul>
-          <% elsif customer_signed_in? %>
-          <ul>
-            <li>
+            <li class="nav-item">
               <%= link_to "マイページ", customer_path(current_customer.id),class: 'btn btn-default'  %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "商品一覧", products_path,class: 'btn btn-default' %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "カート", cart_items_path,class: 'btn btn-default' %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-default' %>
             </li>
-          </ul>
-          <!--管理者側、会員側どちらもログインしていない時は共通なので-->
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "商品一覧", admins_products_path,class: 'btn btn-default' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admins_customers_path,class: 'btn btn-default' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "注文履歴一覧", admins_root_path,class: 'btn btn-default' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", admins_genres_path,class: 'btn btn-default' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-default' %>
+            </li>
+          
           <% else %>
-          <ul>
-            <li>
+            <li class="nav-item">
               <%= link_to "About", home_about_path,class: 'btn btn-default' %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "商品一覧", products_path,class: 'btn btn-default' %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-default' %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-default' %>
             </li>
-          </ul>
-        <% end %>
-        </div>
+          <% end %>
+        </ul>
       </nav>
     </header>
-    <%= yield %>
+    <div>
+      <%= yield %>
+    </div>
   </body>
 </html>
