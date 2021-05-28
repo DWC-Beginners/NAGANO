@@ -1,0 +1,71 @@
+<div class="container">
+  <h2>ショッピングカート</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="mb-3 text-right">
+        <%= link_to 'カートを空にする', all_destroy_cart_items_path, method: :delete, class:"btn btn-danger" %>
+      </div>
+      <div>
+        <table class="table table-hover table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tb>
+            <% @sum = 0 %>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td>
+                  <%= attachment_image_tag @product, :image, :fill, 200, 200 %>
+                  <%= cart_item.product.name %>
+                </td>
+                <td>¥<%= ((cart_item.product.price*1.10).to_i).to_s(:delimited) %></td>
+                <td>
+                  <% form_with model: @cart_items do |f| %>
+                    <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数" %>
+                    <%= f.submit '変更' %>
+                  <% end %>
+                </td>
+                <td>
+                  ¥<%= ((cart_item.product.price*1.10).to_i*(cart.amount).to_i).to_s(:delimited) %>
+                  <% @sum += ((cart_item.product.price*1.10).to_i*(cart.amount).to_i) %>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <%= link_to "削除", destroy_cart_items_path(@item.id), method: :delete, class: 'btn btn-danger' %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tb>
+        </table>
+        <div class="row">
+          <div class="col-md-2 offset-md-1 mt-3">
+            <%= link_to "買い物を続ける", products_path, class: 'btn btn-primary' %>
+          </div>
+          
+          <div class="col-sm-3 offset-md-6">
+          <table class="table table-bordered text-right">
+            <thead>
+              <tr>
+                <td class="text-left">合計金額</td>
+                <td class="text-left">
+                  ¥<%= @sum.to_s(:delimited) %>
+                </td>
+              </tr>
+            </thead>
+          </table>
+          </div>
+          <div class="text-center">
+            <%= link_to "情報入力に進む", new_order_path, class: 'btn btn-success btn-lg' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

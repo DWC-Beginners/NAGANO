@@ -1,0 +1,67 @@
+<h1>注文情報確認</h1>
+
+<table>
+  <thead>
+    <!--小計の部分間違ってると思われる。-->
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @order_items.each do |order_item| %>
+        <td>
+          <img>
+          <%= order_item.product.name %>
+        </td>
+        <td><%= order_item.product.price * 1.1 %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= order_item.price * 1.1%></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>送料</td>
+    <td><%= @order.shipping_cost %></td>
+  </tr>
+  <tr>
+    <td>商品合計</td>
+    <td><%= @order.total_payment * 1.1%></td>
+  </tr>
+  <tr>
+    <td>請求額</td>
+    <td><%= @order.total_payment * 1.1 + @order.shipping_cost %></td>
+  </tr>
+</table>
+<!--form_with仕様　普通のやつもあり-->
+<!--下のform_withは２行目に表示していいのかな？-->
+<%= form_with model: @address,local:true do |f| %>
+<table>
+  <tr>
+    <td>支払方法</td>
+    <td><%= f.hidden_field :payment_method %></td>
+  </tr>
+  <tr>
+    <td>お届け先</td>
+    <td>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %><br>
+      <%= f.hidden_field :name %>
+    </td>
+  </tr>
+  <tr>
+    <!--ボタンどちらかいらない-->
+    <td><%= f.submit '注文を確定する'%></td>
+  </tr>
+</table>
+<% end %>
+<%= button_to "注文を確定する", order_complete_path, method: :patch, class: "register-blue-btn" %>
+
+
+
